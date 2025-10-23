@@ -19,11 +19,46 @@ Leve e flexível: Por ser leve, permite que os desenvolvedores tenham mais contr
 
 ---
 
-**MVC** é um padrão de arquitetura de software que divide uma aplicação em três camadas interconectadas: Model (Modelo), View (Visão) e Controller (Controlador). Essa separação de responsabilidades facilita a manutenção, o reuso de código e a escalabilidade do sistema. O modelo gerencia os dados e a lógica de negócio, a visão cuida da apresentação ao usuário e o controlador intermedia as requisições do usuário e as interações com o modelo e a visão. 
-Camadas do MVC
-
-Model (Modelo): Gerencia os dados e a lógica de negócio da aplicação. Ele interage com o banco de dados, realiza operações e fornece os dados necessários quando solicitados pelo Controller.
-
-View (Visão): Responsável pela apresentação dos dados ao usuário. Ela não contém lógica de negócio, mas recebe as informações do Controller e as exibe de forma visual. 
-
-Controller (Controlador): Atua como intermediário, recebendo as requisições do usuário. Ele processa essas requisições, delega as tarefas ao Model e decide qual View deve ser apresentada ao usuário. 
+**Templates e Static no Flask**
+Estrutura de pastas:
+- controllers: onde ficam as rotas (funções) da aplicação
+- templates: onde ficam os arquivos HTML que serão renderizados plo Flask
+- static: onde ficam os arquivos estáticos (CSS, JS, imagens, etc)
+- 
+**Por que separar HTML, CSS e JS em pastas diferentes?**
+1. Organização do projeto
+- Cada tipo de arquivo tem seu lugar definido
+- Fica mais fácil encontrar e alterar apenas aquilo que se quer
+- Em projetos maiores, essa organização evita bagunça e perda de tempo
+- 
+2. Separação de responsabilidades
+- HTML: estrutura de conteúdo da página
+- CSS: aparência (cores, estilos, posicionamento, etc)
+- JavaScript: comportamento e interatividade
+- 
+3. Reuso e manutenção
+- Um mesmo CSS pode ser usado em várias páginas
+- Se precisar alterar o estilo, basta mudar em um único arquivo
+- Isso reduz erros e facilita correções
+- 
+4. Padrões de mercado
+- Frameworks e equipes profissionais seguem essa mesma lógica
+- São boas práticas da área
+5. Escalabilidade
+- Se o projeto crescer a estrutura continua funcionando
+- É possível adicionar novas páginas, novos títulos ou scripts "sem misturar tudo".
+**O que são Templates no Flask?**
+- São modelos de página HTML que podem ser reutilizados
+- O flask usar o motor de templates Jinja2
+Exemplos de uso:
+<h1> Olá, {{ var }}! </h1>
+<ul>
+    {% for item in lista %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+{% if usuario_logado %}
+    <p>Bem-vindo de volta!</p>
+{% else %}
+    <p>Faça login para continuar.</p>
+{% endif %}
