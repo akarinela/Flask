@@ -51,6 +51,7 @@ Estrutura de pastas:
 - São modelos de página HTML que podem ser reutilizados
 - O flask usar o motor de templates Jinja2
 Exemplos de uso:
+```
 <h1> Olá, {{ var }}! </h1>
 <ul>
     {% for item in lista %}
@@ -62,3 +63,4 @@ Exemplos de uso:
 {% else %}
     <p>Faça login para continuar.</p>
 {% endif %}
+```
