@@ -53,11 +53,15 @@ Estrutura de pastas:
 Exemplos de uso:
 ```
 <h1> Olá, {{ var }}! </h1>
+```
+```
 <ul>
     {% for item in lista %}
         <li>{{ item }}</li>
     {% endfor %}
 </ul>
+```
+```
 {% if usuario_logado %}
     <p>Bem-vindo de volta!</p>
 {% else %}
