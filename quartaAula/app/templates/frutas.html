@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha lista em FLASK</title>
+
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Lista de frutas</h1>
+    <ul>
+       {% for item in lista %}
+            {% if item == "limao" %}
+    <li class="uva"> {{ item }}</li>
+        {% else %}
+    <li class="nova"></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</body>
+</html>
