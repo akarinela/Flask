@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtos</title>
+</head>
+<body>
+    <h1>Gerenciador de Produtos</h1>
+
+    <h2>Adicionar Novo Produto</h2>
+    <form action="{{ url_for('adicionar') }}" method="POST">
+        <p>
+            Nome: <input type="text" name="nome" required>
+        </p>
+        <p>
+            Preço (R$): <input type="number" name="preco" step="0.01" min="0">
+        </p>
+        <p>
+            Quantidade: <input type="number" name="quantidade" min="0">
+        </p>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <hr>
+
+    <h2>Produtos Cadastrados</h2>
+    <ul>
+        {% for produto in produtos %}
+        <li>
+            [{{ produto.id }}] {{ produto.nome }}
+            (Preço: R$ {{ "%.2f"|format(produto.preco) if produto.preco is not none else 'N/A' }})
+            (Qtd: {{ produto.quantidade if produto.quantidade is not none else 'N/A' }})
+
+            [<a href="{{ url_for('editar', id=produto.id) }}">Editar</a>]
+            [<a href="{{ url_for('excluir', id=produto.id) }}">Excluir</a>]
+            <br><br>
+        </li>
+        {% else %}
+        <li>Nenhum produto cadastrado.</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="{{ url_for('index') }}">Voltar para a Página Inicial</a>
+</body>
+</html>
