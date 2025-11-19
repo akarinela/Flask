@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Filmes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Catálogo de Filmes</h1>
+
+    <form action="{{ url_for('adicionar') }}" method="POST">
+        <h2>Adicionar Novo Filme</h2>
+        <p>Título: <input type="text" name="titulo" required></p>
+        <p>Gênero: <input type="text" name="genero"></p>
+        <p>Ano: <input type="number" name="ano"></p>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Filmes Cadastrados</h2>
+    <ul>
+        {% for filme in filmes %}
+        <li>
+            <div>
+                <strong>{{ filme.titulo }}</strong><br>
+                <small>{{ filme.genero if filme.genero else 'Sem gênero' }} | {{ filme.ano if filme.ano else '----' }}</small>
+            </div>
+
+            <div class="acoes">
+                <a href="{{ url_for('editar', id=filme.id) }}" class="btn-editar">Editar</a>
+                <a href="{{ url_for('excluir', id=filme.id) }}" class="btn-excluir" onclick="confirmarExclusao(event)">Excluir</a>
+            </div>
+        </li>
+        {% else %}
+        <li style="text-align: center; color: #777;">Nenhum filme cadastrado.</li>
+        {% endfor %}
+    </ul>
+</body>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

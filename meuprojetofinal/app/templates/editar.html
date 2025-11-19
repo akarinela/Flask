@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Filme</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Editar Filme: {{ filme.titulo }}</h1>
+
+    <form action="{{ url_for('editar', id=filme.id) }}" method="POST">
+        <p>Título: <input type="text" name="titulo" value="{{ filme.titulo }}"></p>
+        <p>Gênero: <input type="text" name="genero" value="{{ filme.genero|default('') }}"></p>
+        <p>Ano: <input type="number" name="ano" value="{{ filme.ano|default('') }}"></p> 
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <br>
+    <div style="text-align: center;">
+        <a href="{{ url_for('listar_filmes') }}">Cancelar e Voltar</a>
+    </div>
+</body>
+</html>

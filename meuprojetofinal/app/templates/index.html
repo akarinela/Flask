@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Início</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="text-align: center; padding-top: 50px;">
+    <h1>Bem-vindo ao Catálogo de Filmes</h1>
+    <br>
+    <a href="{{ url_for('listar_filmes') }}" 
+       style="background: #3498db; color: white; padding: 15px 30px; border-radius: 5px; font-size: 1.2em;">
+       Acessar o Catálogo
+    </a>
+</body>
+
+<img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo do Cinema" width="100">
+
+</html>
